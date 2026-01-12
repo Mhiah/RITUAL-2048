@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <title>2048 for RITUAL</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +32,13 @@
       height: 100%;
       font-family: var(--font-sans);
       background: var(--bg);
-      color: var(--accent)
+      color: var(--accent);
+      overflow: hidden;
+      /* Prevent scrolling */
+      overscroll-behavior: none;
+      /* Prevent bounce */
+      touch-action: none;
+      /* Disable standard touch actions like zoom/scroll */
     }
 
     .app {
@@ -356,9 +363,9 @@
     }
 
     @media (max-width:420px) {
-      .board {
-        width: 92vw;
-        height: 92vw
+      .app {
+        gap: 16px;
+        padding: 12px;
       }
 
       .logo {
@@ -366,16 +373,59 @@
         letter-spacing: 6px
       }
 
+      .game-wrap {
+        padding: 16px;
+        /* Reduce visual footprint on mobile */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .board {
+        width: 82vw;
+        /* Reduced from 92vw */
+        height: 82vw;
+        max-width: 320px;
+        max-height: 320px;
+      }
+
       .top-row {
         flex-wrap: wrap;
-        justify-content: center
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 12px;
       }
 
       .controls {
         margin-left: 0;
-        margin-top: 8px;
+        margin-top: 0;
         width: 100%;
         justify-content: center
+      }
+
+      .score,
+      .best {
+        padding: 10px 16px;
+        min-width: 80px;
+      }
+
+      .score .value,
+      .best .value {
+        font-size: 18px;
+      }
+
+      /* Scale down corner logos on mobile */
+      .corner-logo {
+        width: 40px;
+        height: 40px;
+      }
+
+      .logo-top-right {
+        top: 12px;
+        right: 12px;
+      }
+
+      .logo-bottom-left {
+        bottom: 12px;
+        left: 12px;
       }
     }
   </style>
